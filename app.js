@@ -3,7 +3,7 @@ var logger = require('morgan')
 var cookieParser = require('cookie-parser')
 var bodyParser = require('body-parser')
 
-const port = 10010
+const port = process.env.PORT
 
 var stocks = require('./api/controllers/stocks')
 var swagger = require('./api/controllers/swagger')
@@ -67,9 +67,7 @@ function onListening () {
   console.log('\nListening on ' + bind)
 }
 
-app.listen(process.env.PORT || port, function(){
-  console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
-});
+app.listen(port);
 
 app.on('error', onError)
 app.on('listening', onListening)
