@@ -1,11 +1,21 @@
 
 function getAllPlatforms(req, res, next) {
   var data = [{"name":"Carousell","url":"https://carousell.com/"},{"name":"Grab","url":"https://www.grab.com/sg/"},{"name":"Shopee","url":"https://shopee.sg/"}];
-  
+
    res.status(200).json({
     status: 'success',
     data: data,
     message: 'Retrieved ALL Online Platforms'
+  });
+}
+
+function getAllUsers(req, res, next) {
+  var data = [{"name":"Belson Heng","joinDate":"11 Sep 2017"},{"name":"Jit Hwee","joinDate":"21 Nov 2015"},{"name":"Ming Jun","joinDate":"08 Aug 2011"}];
+
+   res.status(200).json({
+    status: 'success',
+    data: data,
+    message: 'Retrieved ALL Users'
   });
 }
 
@@ -78,4 +88,5 @@ function getAllPlatforms(req, res, next) {
 
 module.exports = {
   getAllPlatforms: getAllPlatforms,
+  getAllUsers: getAllUsers
 };

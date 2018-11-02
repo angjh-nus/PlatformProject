@@ -13,6 +13,13 @@ var db = require('../queries');
  *       url:
  *         type: string
  *
+ *   User:
+ *     properties:
+ *       name:
+ *         type: string
+ *       joinDate:
+ *         type: string
+ *
  */
 
 /**
@@ -20,8 +27,8 @@ var db = require('../queries');
  * /api/platforms:
  *   get:
  *     tags:
- *       - Platforms
- *     description: Returns all Online Platforms
+ *       - APIs
+ *     description: Return all Online Platforms
  *     produces:
  *       - application/json
  *     responses:
@@ -31,6 +38,24 @@ var db = require('../queries');
  *           $ref: '#/definitions/Platform'
  */
 router.get('/api/platforms', db.getAllPlatforms);
+
+
+/**
+ * @swagger
+ * /api/users:
+ *   get:
+ *     tags:
+ *       - APIs
+ *     description: Return all Users
+ *     produces:
+ *       - application/json
+ *     responses:
+ *       200:
+ *         description: An array of users
+ *         schema:
+ *           $ref: '#/definitions/User'
+ */
+router.get('/api/platforms', db.getAllUsers);
 
 
 
