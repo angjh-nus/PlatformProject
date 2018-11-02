@@ -27,7 +27,7 @@ var db = require('../queries');
  * /api/platforms:
  *   get:
  *     tags:
- *       - APIs
+ *       - Platform
  *     description: Return all Online Platforms
  *     produces:
  *       - application/json
@@ -45,7 +45,7 @@ router.get('/api/platforms', db.getAllPlatforms);
  * /api/users:
  *   get:
  *     tags:
- *       - APIs
+ *       - User
  *     description: Return all Users
  *     produces:
  *       - application/json
