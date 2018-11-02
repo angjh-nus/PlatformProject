@@ -55,7 +55,7 @@ router.get('/api/platforms', db.getAllPlatforms);
  *         schema:
  *           $ref: '#/definitions/User'
  */
-router.get('/api/platforms', db.getAllUsers);
+router.get('/api/users', db.getAllUsers);
 
 
 
