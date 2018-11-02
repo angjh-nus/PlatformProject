@@ -17,7 +17,7 @@ var swaggerDefinition = {
     version: '1.0.1',
     description: 'Demonstrating how to desribe a RESTful API for Consumers and Producers',
   },
-  host: 'platformproject.herokuapp.com:3000',
+  host: 'platformproject.herokuapp.com',
   basePath: '/',
 };
 //platformproject.herokuapp.com:3000
