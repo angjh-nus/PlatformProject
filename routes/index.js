@@ -39,6 +39,28 @@ var db = require('../queries');
  */
 router.get('/api/platforms', db.getAllPlatforms);
 
+/**
+ * @swagger
+ * /api/platform:
+ *   post:
+ *     tags:
+ *       - Platform
+ *     description: Creates a new Online Platform
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: Platform
+ *         description: Platform object
+ *         in: body
+ *         required: true
+ *         schema:
+ *           $ref: '#/definitions/Platform'
+ *     responses:
+ *       200:
+ *         description: Successfully created
+ */
+router.post('/api/platform', db.createPlatform);
+
 
 /**
  * @swagger

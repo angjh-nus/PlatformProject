@@ -9,6 +9,15 @@ function getAllPlatforms(req, res, next) {
   });
 }
 
+ function createPlatform(req, res, next) {
+  
+      res.status(200)
+        .json({
+          status: 'success',
+          message: 'Inserted one platform'
+        });
+}
+
 function getAllUsers(req, res, next) {
   var data = [{"name":"Belson Heng","joinDate":"11 Sep 2017"},{"name":"Jit Hwee","joinDate":"21 Nov 2015"},{"name":"Ming Jun","joinDate":"08 Aug 2011"}];
 
@@ -88,5 +97,6 @@ function getAllUsers(req, res, next) {
 
 module.exports = {
   getAllPlatforms: getAllPlatforms,
+  createPlatform: createPlatform,
   getAllUsers: getAllUsers
 };
