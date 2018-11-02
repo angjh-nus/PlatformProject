@@ -67,7 +67,10 @@ function onListening () {
   console.log('\nListening on ' + bind)
 }
 
-app.listen(port)
+app.listen(process.env.PORT || port, function(){
+  console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+});
+
 app.on('error', onError)
 app.on('listening', onListening)
 
