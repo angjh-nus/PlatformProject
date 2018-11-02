@@ -1,33 +1,13 @@
-About
-=====
+# Swagger and NodeJS
 
-Project showing how to setup Swagger for a REST API develop with Node.js and Express.
+## Want to learn how to build this project?
 
-More details in the blog entry: https://danielpecos.com/2017/09/06/rest-api-with-node-js-and-swagger
+Check out the [blog post](http://mherman.org/blog/2016/05/26/swagger-and-nodejs).
 
-Installation
-============
+## Want to use this project?
 
-    npm install
-    npm start
-
-Swagger documentation - HTML and JSON
-===================================
-
-* Swagger UI:
- 
- 
-     http://localhost:3000/api/docs
-
-* JSON: 
-
-
-     http://localhost:3000/api/docs/json
-
-REST API Endpoints
-==================
-
-* *GET* http://localhost:3000/api/stocks
-* *GET* http://localhost:3000/api/stocks/1
-* *POST* http://localhost:3000/api/stocks
-* *PUT* http://localhost:3000/api/stocks/1
+1. Fork/Clone
+1. Install dependencies - `npm install`
+1. Create and seed a Postgres database - `psql -f puppies.sql`
+1. Sanity check - `npm start`
+1. Navigate to [http://localhost:3000/api/puppies](http://localhost:3000/api/puppies) and [http://localhost:3000/api-docs](http://localhost:3000/api-docs)

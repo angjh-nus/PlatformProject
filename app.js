@@ -1,75 +1,86 @@
-var express = require('express')
-var logger = require('morgan')
-var cookieParser = require('cookie-parser')
-var bodyParser = require('body-parser')
+var express = require('express');
+var path = require('path');
+var favicon = require('serve-favicon');
+var logger = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+var swaggerJSDoc = require('swagger-jsdoc');
 
-const port = process.env.PORT
+var routes = require('./routes/index');
 
-var stocks = require('./api/controllers/stocks')
-var swagger = require('./api/controllers/swagger')
+var app = express();
 
-var app = express()
+// swagger definition
+var swaggerDefinition = {
+  info: {
+    title: 'Node Swagger API',
+    version: '1.0.1',
+    description: 'Demonstrating how to desribe a RESTful API with Swagger',
+  },
+  host: 'localhost:3000',
+  basePath: '/',
+};
 
-app.use(logger('dev'))
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(cookieParser())
+// options for the swagger docs
+var options = {
+  // import swaggerDefinitions
+  swaggerDefinition: swaggerDefinition,
+  // path to the API docs
+  apis: ['./routes/*.js'],
+};
 
-app.use('/api/stocks', stocks)
-app.use('/api/docs', swagger.router)
+// initialize swagger-jsdoc
+var swaggerSpec = swaggerJSDoc(options);
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
+
+// uncomment after placing your favicon in /public
+//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/', routes);
+
+app.get('/swagger.json', function(req, res) {
+  res.setHeader('Content-Type', 'application/json');
+  res.send(swaggerSpec);
+});
 
 // catch 404 and forward to error handler
-app.use(function (req, res, next) {
-  var err = new Error('Not Found')
-  err.status = 404
-  next(err)
-})
+app.use(function(req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
 
-// error handler
-app.use(function (err, req, res, next) {
-  console.error(`Error catched! ${err}`)
+// error handlers
 
-  const error = {
-    status: err.status || 500,
+// development error handler
+// will print stacktrace
+if (app.get('env') === 'development') {
+  app.use(function(err, req, res, next) {
+    res.status( err.code || 500 )
+    .json({
+      status: 'error',
+      message: err
+    });
+  });
+}
+
+// production error handler
+// no stacktraces leaked to user
+app.use(function(err, req, res, next) {
+  res.status(err.status || 500)
+  .json({
+    status: 'error',
     message: err.message
-  }
+  });
+});
 
-  res.status(error.status).send(error)
-})
 
-function onError (error) {
-  if (error.syscall !== 'listen') {
-    throw error
-  }
-
-  const bind = typeof port === 'string'
-        ? 'Pipe ' + port
-        : 'Port ' + port
-
-    // handle specific listen errors with friendly messages
-  switch (error.code) {
-    case 'EACCES':
-      console.error(bind + ' requires elevated privileges')
-      process.exit(1)
-    case 'EADDRINUSE':
-      console.error(bind + ' is already in use')
-      process.exit(1)
-    default:
-      throw error
-  }
-}
-
-function onListening () {
-  const addr = app.address()
-  const bind = typeof addr === 'string'
-        ? 'pipe ' + addr
-        : 'port ' + addr.port
-  console.log('\nListening on ' + bind)
-}
-
-app.listen(port);
-
-app.on('error', onError)
-app.on('listening', onListening)
-
-console.log('Server started on port ' + port)
+module.exports = app;
