@@ -10,7 +10,6 @@ function getAllPlatforms(req, res, next) {
 }
 
  function createPlatform(req, res, next) {
-  
       res.status(200)
         .json({
           status: 'success',
@@ -26,6 +25,15 @@ function getAllUsers(req, res, next) {
     data: data,
     message: 'Retrieved ALL Users'
   });
+}
+
+function createUser(req, res, next) {
+
+     res.status(200)
+       .json({
+         status: 'success',
+         message: 'Inserted one user'
+       });
 }
 
 // function getSinglePuppy(req, res, next) {
@@ -98,5 +106,6 @@ function getAllUsers(req, res, next) {
 module.exports = {
   getAllPlatforms: getAllPlatforms,
   createPlatform: createPlatform,
-  getAllUsers: getAllUsers
+  getAllUsers: getAllUsers,
+  createUser:createUser
 };

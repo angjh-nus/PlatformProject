@@ -79,6 +79,28 @@ router.post('/api/platform', db.createPlatform);
  */
 router.get('/api/users', db.getAllUsers);
 
+/**
+ * @swagger
+ * /api/user:
+ *   post:
+ *     tags:
+ *       - User
+ *     description: Create a new User
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: User
+ *         description: User object
+ *         in: body
+ *         required: true
+ *         schema:
+ *           $ref: '#/definitions/User'
+ *     responses:
+ *       200:
+ *         description: Successfully created
+ */
+router.get('/api/users', db.createUser);
+
 
 
 module.exports = router;
