@@ -13,13 +13,15 @@ var app = express();
 // swagger definition
 var swaggerDefinition = {
   info: {
-    title: 'Node Swagger API',
+    title: 'IS5003 - PLATFORM DESIGN - Project Prestige API - Team 3 Musketeers',
     version: '1.0.1',
-    description: 'Demonstrating how to desribe a RESTful API with Swagger',
+    description: 'Demonstrating how to desribe a RESTful API for Consumers and Producers',
   },
   host: 'platformproject.herokuapp.com:3000',
   basePath: '/',
 };
+//platformproject.herokuapp.com:3000
+
 
 // options for the swagger docs
 var options = {

@@ -1,19 +1,11 @@
-var promise = require('bluebird');
 
-var options = {
-  // Initialization Options
-  promiseLib: promise
-};
-
-//var pgp = require('pg-promise')(options);
-//var connectionString = 'postgres://localhost:5432/puppies';
-//var db = pgp(connectionString);
-
-function getAllPuppies(req, res, next) {
-  return json({
+function getAllPlatforms(req, res, next) {
+  var data = [{"name":"Carousell","url":"https://carousell.com/"},{"name":"Grab","url":"https://www.grab.com/sg/"},{"name":"Shopee","url":"https://shopee.sg/"}];
+  
+   res.status(200).json({
     status: 'success',
-    data: "HelloWorld",
-    message: 'Retrieved ALL puppies'
+    data: data,
+    message: 'Retrieved ALL Online Platforms'
   });
 }
 
@@ -85,5 +77,5 @@ function getAllPuppies(req, res, next) {
 
 
 module.exports = {
-  getAllPuppies: getAllPuppies,
+  getAllPlatforms: getAllPlatforms,
 };

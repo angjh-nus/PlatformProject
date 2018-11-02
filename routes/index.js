@@ -6,127 +6,32 @@ var db = require('../queries');
 /**
  * @swagger
  * definitions:
- *   Puppy:
+ *   Platform:
  *     properties:
  *       name:
  *         type: string
- *       breed:
+ *       url:
  *         type: string
- *       age:
- *         type: integer
- *       sex:
- *         type: string
+ *
  */
 
 /**
  * @swagger
- * /api/puppies:
+ * /api/platforms:
  *   get:
  *     tags:
- *       - Puppies
- *     description: Returns all puppies
+ *       - Platforms
+ *     description: Returns all Online Platforms
  *     produces:
  *       - application/json
  *     responses:
  *       200:
- *         description: An array of puppies
+ *         description: An array of online platforms
  *         schema:
- *           $ref: '#/definitions/Puppy'
+ *           $ref: '#/definitions/Platform'
  */
-router.get('/api/puppies', db.getAllPuppies);
+router.get('/api/platforms', db.getAllPlatforms);
 
-/**
- * @swagger
- * /api/puppies/{id}:
- *   get:
- *     tags:
- *       - Puppies
- *     description: Returns a single puppy
- *     produces:
- *       - application/json
- *     parameters:
- *       - name: id
- *         description: Puppy's id
- *         in: path
- *         required: true
- *         type: integer
- *     responses:
- *       200:
- *         description: A single puppy
- *         schema:
- *           $ref: '#/definitions/Puppy'
- */
-//router.get('/api/puppies/:id', db.getSinglePuppy);
-
-/**
- * @swagger
- * /api/puppies:
- *   post:
- *     tags:
- *       - Puppies
- *     description: Creates a new puppy
- *     produces:
- *       - application/json
- *     parameters:
- *       - name: puppy
- *         description: Puppy object
- *         in: body
- *         required: true
- *         schema:
- *           $ref: '#/definitions/Puppy'
- *     responses:
- *       200:
- *         description: Successfully created
- */
-//router.post('/api/puppies', db.createPuppy);
-
-/**
- * @swagger
- * /api/puppies/{id}:
- *   put:
- *     tags:
- *       - Puppies
- *     description: Updates a single puppy
- *     produces:
- *       - application/json
- *     parameters:
- *       - name: id
- *         description: Puppy's id
- *         in: path
- *         required: true
- *         type: integer
- *       - name: puppy
- *         description: Puppy object
- *         in: body
- *         required: true
- *         schema:
- *           $ref: '#/definitions/Puppy'
- *     responses:
- *       200:
- *         description: Successfully updated
- */
-//router.put('/api/puppies/:id', db.updatePuppy);
-
-/**
- * @swagger
- * /api/puppies/{id}:
- *   delete:
- *     tags:
- *       - Puppies
- *     description: Deletes a single puppy
- *     produces:
- *       - application/json
- *     parameters:
- *       - name: id
- *         description: Puppy's id
- *         in: path
- *         required: true
- *         type: integer
- *     responses:
- *       200:
- *         description: Successfully deleted
- */
-//router.delete('/api/puppies/:id', db.removePuppy);
 
 
 module.exports = router;
